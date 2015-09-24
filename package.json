@@ -1,0 +1,15 @@
+{
+  "name": "watchx",
+  "version": "0.0.1",
+  "description": "Watch and execute",
+  "main": "index.js",
+  "bin": {
+    "watchx": "./index.js"
+  },
+  "author": "Grisha Pushkov <grisha@push.org.ru>",
+  "license": "WTFPL",
+  "dependencies": {
+    "chokidar": "^1.0.5",
+    "lodash": "^3.10.1"
+  }
+}
