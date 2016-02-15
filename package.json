@@ -9,7 +9,7 @@
   "author": "Grisha Pushkov <grisha@push.org.ru>",
   "license": "WTFPL",
   "dependencies": {
-    "chokidar": "^1.0.5",
+    "chokidar": "^1.4.0",
     "lodash": "^3.10.1"
   }
 }
