@@ -17,18 +17,25 @@ var watcher  = chokidar.watch(CONFIG['DIR'], {
 var eventsCounter = 0,
     changedFiles = []
 
-var triggerAction = debounce(function() {
-  var action = (eventsCounter == 1)
-    ? 'SINGLE_CHANGE'
-    : 'MULTIPLE_CHANGE'
+var triggerAction = debounce(
+  function() {
+    var action = (eventsCounter == 1)
+      ? 'SINGLE_CHANGE'
+      : 'MULTIPLE_CHANGE'
 
-  if (action == 'SINGLE_CHANGE') changedFiles = changedFiles[0]
+    if (action == 'SINGLE_CHANGE') changedFiles = changedFiles[0]
 
-  actions.emit(action, changedFiles)
+    actions.emit(action, changedFiles)
 
-  eventsCounter = 0
-  changedFiles = []
-}, CONFIG['DEBOUNCE'])
+    eventsCounter = 0
+    changedFiles = []
+  }, 
+  CONFIG['DEBOUNCE'],
+  {
+    leading: true,
+    trailing: false
+  }
+)
 
 watcher
   .on('change', function(path) {
